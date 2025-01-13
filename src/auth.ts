@@ -1,14 +1,13 @@
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 
 export const { auth, handlers } = NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
   ],
-  // ログイン成功後のリダイレクト先を設定
   callbacks: {
     async redirect({ url, baseUrl }) {
       return baseUrl;
